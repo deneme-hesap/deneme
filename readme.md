@@ -2,6 +2,7 @@
 
 Bu proje, çeşitli veri kaynaklarından veri toplayan, dönüştüren ve bu verileri Elasticsearch'e gönderen bir veri entegrasyon pipeline'ını içermektedir. Ayrıca, belirli durumlarda bildirim gönderme işlevi de bulunmaktadır.
 
+![alt text](yapı.jpeg)
 
 ## Veri Kaynakları
 
