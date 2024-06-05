@@ -59,8 +59,29 @@ filter {
 Bu yapı, belirli bir koşulun sağlandığı durumlarda ek işlemler yapabilmek için kullanışlıdır. Bu durumda, "get_data_to_elastic" etiketine sahip olan veriler için özel bir Ruby betiği çalıştırılarak ek işlevsellik sağlanabilir.
 
 ### OUTPUT
-Logstash'in filter aşamasında eklenen tagların kontrolü yapılarak, işlenmiş verileri nereye ve nasıl göndereceğini tanımlar. Tag eklenmek zorunda değildir
+Logstash'in filter aşamasında eklenen tagların kontrolü yapılarak, işlenmiş verileri nereye ve nasıl göndereceğini tanımlar. Tag eklenmek zorunda değildir. Bu yapılandırma, çeşitli etiketler ve alanlara göre farklı indekslere veri gönderilmesini sağlar. Bu sayede, farklı türdeki veriler ayrı indekslerde toplanarak daha düzenli ve yönetilebilir hale getirilir.
 
+```
+if "get_data_to_elastic" in [tags] {
+  if "logging" not in [tags] {
+    # Elasticsearch'e gönder
+    elasticsearch {
+      hosts => ["${ELASTICSEARCH_URL}"]
+      index => "template_project_mock"
+      doc_as_upsert => true
+      document_id => "%{id}"
+      action => "index"
+    }
+  } 
+}
+if [log] { 
+  elasticsearch {
+    hosts => ["${ELASTICSEARCH_URL}"]
+    index => "template_project_logs"
+  } 
+}
+
+```
 #### TEMEL PARAMETRELER
 - **HOSTS**
 Elasticsearch kümesine bağlantı kurulacak sunucu adreslerini belirtir
