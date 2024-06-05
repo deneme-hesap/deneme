@@ -34,13 +34,13 @@ input {
  : isteğin zaman aşımına uğramadan önce bekleyeceği süreyi (saniye cinsinden) belirtir.
 
 - **schedule**
-isteklerin ne sıklıkta yapılacağını belirler. 
+ : isteklerin ne sıklıkta yapılacağını belirler. 
 
 - **tags**
-olaylara eklenen etiketlerdir. Bu etiket filtreleme ve çıktılama aşamalarında olayları tanımlamak için kullanılabilir.(elasticsearch'e basma veya loglama vb.)
+ : olaylara eklenen etiketlerdir. Bu etiket filtreleme ve çıktılama aşamalarında olayları tanımlamak için kullanılabilir.(elasticsearch'e basma veya loglama vb.)
 
 - **codec**
-verilerin nasıl kodlanacağını veya kodlarının çözüleceğini belirtir. 
+ : verilerin nasıl kodlanacağını veya kodlarının çözüleceğini belirtir. 
 
 
 ### FİLTER
@@ -86,17 +86,17 @@ if [log] {
 ```
 #### TEMEL PARAMETRELER
 - **HOSTS**
-Elasticsearch kümesine bağlantı kurulacak sunucu adreslerini belirtir
+ : Elasticsearch kümesine bağlantı kurulacak sunucu adreslerini belirtir
 
 - **index**
-- Verilerin gönderileceği indeksin adını belirtir.
+ : Verilerin gönderileceği indeksin adını belirtir.
 
 - **document_id**
 Belgenin kimliğini belirler. Her belgenin benzersiz bir kimliğe sahip olmasını sağlar.
 
 - **doc_as_upsert**
-- Belirtilen belge kimliği zaten mevcutsa, belgeyi güncellemek için kullanılır değilse yeni bir belge oluşturur.
+ : Belirtilen belge kimliği zaten mevcutsa, belgeyi güncellemek için kullanılır değilse yeni bir belge oluşturur.
 
 - **action**
-- Belgelerin Elasticsearch'te nasıl işleneceğini belirtir.
+ : Belgelerin Elasticsearch'te nasıl işleneceğini belirtir.
 
