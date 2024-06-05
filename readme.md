@@ -31,7 +31,7 @@ input {
 ```
 #### Temel Parametreler
 - **request_timeout**
-request_timeout, isteğin zaman aşımına uğramadan önce bekleyeceği süreyi (saniye cinsinden) belirtir.
+ : isteğin zaman aşımına uğramadan önce bekleyeceği süreyi (saniye cinsinden) belirtir.
 
 - **schedule**
 isteklerin ne sıklıkta yapılacağını belirler. 
@@ -74,13 +74,15 @@ if "get_data_to_elastic" in [tags] {
     }
   } 
 }
+```
+Eğer bir event get_data_to_elastic etiketine sahipse ve logging etiketi içermiyorsa, bu olay Elasticsearch'e gönderilir yani burada atanan tag'lere göre kontroller yapılıp veriler gerekli index'lere basılır.
+```
 if [log] { 
   elasticsearch {
     hosts => ["${ELASTICSEARCH_URL}"]
     index => "template_project_logs"
   } 
 }
-
 ```
 #### TEMEL PARAMETRELER
 - **HOSTS**
